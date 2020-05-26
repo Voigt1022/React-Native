@@ -1,5 +1,5 @@
-import React, { PureComponent, useState, useEffect, useRef } from 'react';
-import { AppRegistry, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { Camera } from 'expo-camera';
 import * as Permissions from 'expo-permissions';
 import { FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
@@ -42,8 +42,10 @@ const App = () => {
   takePicture = async () => {
     if (cameraRef) {
       let photo = await cameraRef.current.takePictureAsync();
+      console.log(photo.uri);  
     }
   }
+
   if (hasPermission === null) {
     return <View />;
   } else if (hasPermission === false) {
